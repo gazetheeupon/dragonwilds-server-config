@@ -68,6 +68,38 @@
   .privacy strong{color:var(--text);}
   code{background:#0f1720;padding:.1rem .35rem;border-radius:4px;}
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "My server won't start",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Owner ID, Server Name, Default World Name, and Admin Password are all mandatory \u2014 the server refuses to start if any of them are missing. This page flags any that are empty before you export."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "I made changes but the server ignored them",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "DedicatedServer.ini is only read at startup. Editing it while the server is running has no effect, and Jagex's own documentation notes the changes are simply discarded. Stop the server, replace the file, then start it again."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "My server isn't showing up in the server browser",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Double-check the World Name is spelled exactly (it's case-sensitive), confirm your Owner ID is set, and make sure the server's UDP port(s) are forwarded through your router and firewall."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 <header>
