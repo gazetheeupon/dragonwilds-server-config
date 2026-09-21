@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RuneScape: Dragonwilds Server Config Editor — DedicatedServer.ini</title>
+<meta name="description" content="Find, edit, and export your RuneScape: Dragonwilds dedicated server's DedicatedServer.ini. Upload your existing config to edit it, or start fresh, entirely in your browser. Nothing uploaded to a server.">
+<link rel="stylesheet" href="https://gazetheeupon.github.io/shared-assets/theme.css?v=2">
+<link rel="canonical" href="https://gazetheeupon.github.io/dragonwilds-server-config/">
+<meta property="og:title" content="RuneScape: Dragonwilds Server Config Editor">
+<meta property="og:description" content="Edit and export your Dragonwilds dedicated server's DedicatedServer.ini, entirely in your browser. Upload your existing file or start fresh.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://gazetheeupon.github.io/dragonwilds-server-config/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="RuneScape: Dragonwilds Server Config Editor">
+<meta name="twitter:description" content="Edit and export your Dragonwilds dedicated server's DedicatedServer.ini, entirely in your browser. Upload your existing file or start fresh.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "RuneScape: Dragonwilds Server Config Editor",
+  "url": "https://gazetheeupon.github.io/dragonwilds-server-config/",
+  "description": "Find, edit, and export a RuneScape: Dragonwilds dedicated server's DedicatedServer.ini. Upload an existing config to edit it, or start fresh, entirely in your browser.",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Any (runs in web browser)",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+}
+</script>
+<style>
+  :root{--bg:#0f1720;--card:#1a2532;--text:#e8edf2;--muted:#93a3b3;--accent:#4fa8ff;--border:#2a3745;--warn:#ffcf8a;}
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.5;}
+  header{padding:2rem 1rem 1rem;text-align:center;}
+  h1{font-size:1.5rem;margin:0 0 .4rem;}
+  p.sub{color:var(--muted);margin:0 auto;max-width:660px;}
+  main{max-width:760px;margin:0 auto;padding:1.5rem 1rem 3rem;}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.5rem;margin-bottom:1.2rem;}
+  .dropzone{border:2px dashed var(--border);border-radius:10px;padding:2rem 1rem;text-align:center;cursor:pointer;transition:border-color .15s;}
+  .dropzone.drag{border-color:var(--accent);}
+  .dropzone input{display:none;}
+  .dropzone .hint{color:var(--muted);font-size:.9rem;margin-top:.4rem;}
+  .or-row{display:flex;align-items:center;gap:.8rem;margin:1rem 0;color:var(--muted);font-size:.85rem;}
+  .or-row::before,.or-row::after{content:"";flex:1;height:1px;background:var(--border);}
+  .startfresh{display:block;margin:0 auto;background:transparent;border:1px solid var(--border);color:var(--text);border-radius:8px;padding:.6rem 1.2rem;font-size:.9rem;cursor:pointer;}
+  .fname{font-size:.9rem;color:var(--text);margin-top:.6rem;word-break:break-all;text-align:center;}
+  #status{color:var(--muted);font-size:.9rem;margin-top:.8rem;min-height:1.2em;text-align:center;}
+  #status.warn{color:#ff8080;}
+  h2{font-size:1rem;margin:0 0 .8rem;color:var(--text);}
+  .field{margin-bottom:1rem;}
+  .field label{display:block;font-size:.85rem;color:var(--text);font-weight:600;margin-bottom:.3rem;}
+  .field .help{color:var(--muted);font-size:.8rem;margin:.25rem 0 0;}
+  .field .req{color:#ff9a9a;font-weight:400;font-size:.75rem;}
+  .field input[type=text],.field input[type=password]{width:100%;background:#0f1720;border:1px solid var(--border);color:var(--text);border-radius:8px;padding:.55rem .7rem;font-size:.9rem;}
+  .pwrow{display:flex;gap:.5rem;}
+  .pwrow input{flex:1;}
+  button.mini{background:transparent;border:1px solid var(--border);color:var(--muted);border-radius:8px;padding:.55rem .9rem;font-size:.8rem;cursor:pointer;white-space:nowrap;}
+  #guidNote{color:var(--muted);font-size:.8rem;margin:0 0 1rem;padding:.6rem .8rem;background:#0f1720;border-radius:8px;border:1px solid var(--border);}
+  #mandatoryWarning{display:none;color:var(--warn);font-size:.85rem;margin-bottom:1rem;padding:.6rem .8rem;background:rgba(255,207,138,.08);border:1px solid var(--warn);border-radius:8px;}
+  button.act{background:transparent;border:1px solid var(--accent);color:var(--accent);border-radius:8px;padding:.6rem 1.3rem;font-size:.9rem;font-weight:600;cursor:pointer;}
+  #otherList,#warningsList{margin:.4rem 0 0;padding-left:1.2rem;font-size:.85rem;}
+  #otherList{color:var(--muted);}
+  #otherList code{color:var(--text);}
+  #warningsList{color:var(--warn);}
+  table.kv{width:100%;border-collapse:collapse;font-size:.85rem;}
+  table.kv td{padding:.35rem .5rem;border-bottom:1px solid var(--border);vertical-align:top;}
+  table.kv td:first-child{color:var(--muted);width:34%;white-space:nowrap;}
+  .privacy{font-size:.85rem;color:var(--muted);}
+  .privacy strong{color:var(--text);}
+  code{background:#0f1720;padding:.1rem .35rem;border-radius:4px;}
+</style>
+</head>
+<body>
+<header>
+  <h1>RuneScape: Dragonwilds Server Config Editor</h1>
+  <p class="sub">Edit your dedicated server's <code>DedicatedServer.ini</code> without hunting through the wiki for field names. Upload your existing file to edit it, or start fresh, and export a ready-to-use config.</p>
+</header>
+<main>
+  <div class="card">
+    <h2>Where this file lives</h2>
+    <table class="kv">
+      <tr><td>Linux</td><td><code>RSDragonwilds/Saved/Config/Linux/DedicatedServer.ini</code></td></tr>
+      <tr><td>Windows</td><td><code>RSDragonwilds/Saved/Config/WindowsServer/DedicatedServer.ini</code></td></tr>
+    </table>
+    <p class="privacy" style="margin-top:.8rem;">The listen port isn't set in this file &mdash; it's a launch argument, e.g. <code>-port=7777</code> (7777 is the default) when starting <code>RSDragonwildsServer</code>.</p>
+    <p class="privacy" style="margin-top:.6rem;"><strong>Important:</strong> stop the server before editing. Changes made to this file while the server is running are discarded.</p>
+  </div>
+
+  <div class="card">
+    <div class="dropzone" id="dropzone">
+      <div>Drop your existing DedicatedServer.ini here, or click to choose</div>
+      <div class="hint">Prefills the form below so you can edit it</div>
+      <input type="file" id="fileInput" accept=".ini,.txt">
+    </div>
+    <div class="fname" id="fname"></div>
+    <div class="or-row">or</div>
+    <button class="startfresh" id="startFreshBtn">Start a new config from scratch</button>
+    <div id="status"></div>
+  </div>
+
+  <div class="card" id="formCard" style="display:none;">
+    <h2>Server settings</h2>
+
+    <div id="mandatoryWarning"></div>
+
+    <div class="field">
+      <label>Owner ID <span class="req">required</span></label>
+      <input type="text" id="fOwnerId" placeholder="Your RuneScape: Dragonwilds Player ID">
+      <p class="help">Find this in-game: Settings menu &rarr; bottom of the screen &rarr; "My Player ID" &rarr; Copy. The server will not start without this.</p>
+    </div>
+
+    <div class="field">
+      <label>Server Name <span class="req">required</span></label>
+      <input type="text" id="fServerName" placeholder="My Dragonwilds Server">
+      <p class="help">Shown in the in-game server browser.</p>
+    </div>
+
+    <div class="field">
+      <label>Default World Name <span class="req">required</span></label>
+      <input type="text" id="fDefaultWorldName" placeholder="My World">
+      <p class="help">The world created the first time the server starts. Case-sensitive &mdash; players search for this exact name in the Public tab.</p>
+    </div>
+
+    <div class="field">
+      <label>Admin Password <span class="req">required</span></label>
+      <div class="pwrow">
+        <input type="password" id="fAdminPassword" placeholder="Admin password">
+        <button class="mini" type="button" data-toggle-password="fAdminPassword">Show</button>
+      </div>
+      <p class="help">Anyone who enters this in the in-game Server Management screen becomes an Admin until you change it.</p>
+    </div>
+
+    <div class="field">
+      <label>World Password <span class="help" style="display:inline;font-weight:400;">(optional)</span></label>
+      <div class="pwrow">
+        <input type="password" id="fWorldPassword" placeholder="Leave blank for a public, passwordless world">
+        <button class="mini" type="button" data-toggle-password="fWorldPassword">Show</button>
+      </div>
+      <p class="help">Overrides any password saved in the world itself. Blank means anyone can join.</p>
+    </div>
+
+    <div id="guidNote"></div>
+
+    <button class="act" id="exportBtn">Export DedicatedServer.ini</button>
+  </div>
+
+  <div class="card" id="otherCard" style="display:none;">
+    <h2>Other settings found in your file</h2>
+    <p class="privacy">These aren't fields this tool has a form for, but they're kept exactly as-is and will be included when you export.</p>
+    <ul id="otherList"></ul>
+  </div>
+
+  <div class="card" id="warningsCard" style="display:none;">
+    <h2>Notes</h2>
+    <ul id="warningsList"></ul>
+  </div>
+
+  <div class="card">
+    <p class="privacy"><strong>How this works:</strong> this page reads and writes plain <code>DedicatedServer.ini</code> text entirely in your browser tab. Nothing you upload is ever sent anywhere.</p>
+    <p class="privacy" style="margin-top:.6rem;"><strong>ServerGuid:</strong> the server generates this itself on first run to uniquely identify your server. This tool preserves it untouched if your uploaded file already has one, and simply omits it on a fresh config &mdash; the server will create one the first time it starts.</p>
+  </div>
+
+  <div class="card faq">
+    <h2>Troubleshooting</h2>
+    <details><summary>My server won't start</summary>
+      <p>Owner ID, Server Name, Default World Name, and Admin Password are all mandatory &mdash; the server refuses to start if any of them are missing. This page flags any that are empty before you export.</p>
+    </details>
+    <details><summary>I made changes but the server ignored them</summary>
+      <p>DedicatedServer.ini is only read at startup. Editing it while the server is running has no effect, and Jagex's own documentation notes the changes are simply discarded. Stop the server, replace the file, then start it again.</p>
+    </details>
+    <details><summary>My server isn't showing up in the server browser</summary>
+      <p>Double-check the World Name is spelled exactly (it's case-sensitive), confirm your Owner ID is set, and make sure the server's UDP port(s) are forwarded through your router and firewall.</p>
+    </details>
+  </div>
+
+  <div id="ad-slot"></div>
+</main>
+<script src="config-parser.js"></script>
+<script src="app.js"></script>
+<script defer src="https://gazetheeupon.github.io/shared-assets/site.js"></script>
+</body>
+</html>
